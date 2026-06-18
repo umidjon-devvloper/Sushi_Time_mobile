@@ -12,7 +12,7 @@ export const useMenuStore = create((set, get) => ({
   loadMenu: async (category) => {
     set({ loading: true, error: null });
     try {
-      const params = category ? { category } : {};
+      const params = { limit: 1000, ...(category ? { category } : {}) };
       const [itemsRes, catsRes] = await Promise.all([
         httpClient.get(ApiConstants.menu, { params }),
         get().categories.length <= 1
@@ -40,7 +40,7 @@ export const useMenuStore = create((set, get) => ({
     const cat = category === 'All' ? null : category;
     set({ loading: true, error: null });
     try {
-      const params = cat ? { category: cat } : {};
+      const params = { limit: 1000, ...(cat ? { category: cat } : {}) };
       const res = await httpClient.get(ApiConstants.menu, { params });
       set({
         items: res.data?.data?.items || [],

@@ -356,7 +356,8 @@ const styles = StyleSheet.create({
   listCard: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: Colors.surface,
+    // Translucent so the app background design shows through the menu rows.
+    backgroundColor: 'rgba(255,255,255,0.32)',
     paddingHorizontal: Spacing.md,
     paddingVertical: 14,
     borderBottomWidth: StyleSheet.hairlineWidth,
